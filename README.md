@@ -40,7 +40,8 @@ use: [
 
 #### paths
 
-`paths` is an array of objects - each objects should contain:  
+###### `paths` is an array of objects - each objects should contain: 
+   
 `method`: the method of the request  
 `path`: the path of the url  
 `action`: a function to do when the path is requested  
@@ -77,13 +78,15 @@ let serverParams = {
         {
             method: 'get',
             path: '/test',
-            action: (req, res) => {
-                console.log(req);
-                res.send('hi')
-            }
+            action: getTest
         }
     ]
 };
+
+function getTest(req, res) {
+    console.log(req);
+    res.send('hi');
+}
 
 const server = new Jakexpress();
 server.load(serverParams);
