@@ -4,6 +4,12 @@
 
 `npm i jakexpress`
 
+#### Require Jakexios
+
+``` javascript
+const Jakexpress = require('jakexpress');
+```
+
 ### Create your server params
 
 The server params take in three parameters: `localport`,`use`,`paths`.
