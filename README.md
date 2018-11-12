@@ -18,7 +18,7 @@ The server params take in three parameters: `localport`,`use`,`paths`.
 
 #### use
 
-`use` is what you want to add to express, it will be added via:
+`use` is what you want to add to express, it will be added in express like:
 `app.use(YOUR PARAM);`
 
 `use` should be an array.
