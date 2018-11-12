@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 
-module.exports = class Jserv {
+module.exports = class Jakexpress {
     load(serverParams) {
         let port = process.env.PORT || serverParams.localport;
         const app = express();
