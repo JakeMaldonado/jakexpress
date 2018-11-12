@@ -1,0 +1,27 @@
+{
+  "name": "jakexpress",
+  "version": "1.0.0",
+  "description": "a quick way to make a server using an object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeMaldonado/Jserv.git"
+  },
+  "keywords": [
+    "server",
+    "express"
+  ],
+  "author": "Jake Maldonado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeMaldonado/Jserv/issues"
+  },
+  "homepage": "https://github.com/JakeMaldonado/Jserv#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
