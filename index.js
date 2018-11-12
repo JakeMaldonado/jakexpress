@@ -11,14 +11,22 @@ module.exports = class Jakexpress {
         });
 
         serverParams.paths.forEach(pathObj => {
-            let expressPath = {
-                'get': app.get(pathObj.path, pathObj.action),
-                'post': app.post(pathObj.path, pathObj.action),
-                'delete': app.delete(pathObj.path, pathObj.action),
-                'put': app.put(pathObj.path, pathObj.action),
-                'patch': app.patch(pathObj.path, pathObj.action)
-            };
-            expressPath[pathObj.method];
+            switch(pathObj.method ? pathObj.method.toLowerCase() : '') {
+                case 'post':
+                    app.post(pathObj.path, pathObj.action);
+                    break;
+                case 'delete':
+                    app.delete(pathObj.path, pathObj.action);
+                    break;
+                case 'put':
+                    app.put(pathObj.path, pathObj.action);
+                    break;
+                case 'patch':
+                    app.patch(pathObj.path, pathObj.action);
+                    break;
+                default:
+                    app.get(pathObj.path, pathObj.action);
+            }
         });
         
         app.listen(port, () => {
