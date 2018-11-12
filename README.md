@@ -1,8 +1,64 @@
-# jakexpress
+# Jakexpress
 
-npm i jakexpress
+### Install with NPM
 
-const Jakexpress = require('./index');
+`npm i jakexpress`
+
+### Create your server params
+
+The server params take in three parameters: `localport`,`use`,`paths`.
+
+#### localport
+
+`localport` is the port you want to host on if the environment is not development.
+
+###### example
+
+`localport: 3000,`
+
+#### use
+
+`use` is what you want to add to express, it will be added via:
+`app.use(YOUR PARAM);`
+
+`use` should be an array.
+
+###### example
+
+``` javascript
+use: [
+    bodyParser.json(),
+    bodyParser.urlencoded({ extended: true })
+]
+```
+
+#### paths
+
+`paths` is an array of objects - each objects should contain:
+`method`: the method of the request
+`path`: the path of the url
+`action`: a function to do when the path is requested
+
+###### example
+
+```javascript
+paths: [
+    {
+        method: 'get',
+        path: '/test',
+        action: (req, res) => {
+            res.send('hi')
+        }
+    }
+]
+```
+
+### Example usage
+
+Here is an example of jakexpress being used to make a simple server where the get `/test` path responds with 'hi'.
+
+```javascript
+const Jakexpress = require('jakexpress');
 const bodyParser = require('body-parser');
 
 let serverParams = {
@@ -16,20 +72,15 @@ let serverParams = {
             method: 'get',
             path: '/test',
             action: (req, res) => {
+                console.log(req);
                 res.send('hi')
-            }
-        },
-        {
-            method: 'post',
-            path: '/test1',
-            action: (req, res) => {
-                console.log(req.body);
-                res.send('the post boi');
             }
         }
     ]
 };
 
-
 const server = new Jakexpress();
 server.load(serverParams);
+```
+
+
