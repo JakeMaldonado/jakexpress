@@ -10,7 +10,7 @@ module.exports = class Jakexpress {
             app.use(param);
         });
 
-        serverParams.paths.map(pathObj => {
+        serverParams.paths.forEach(pathObj => {
             let expressPath = {
                 'get': app.get(pathObj.path, pathObj.action),
                 'post': app.post(pathObj.path, pathObj.action),
@@ -18,7 +18,7 @@ module.exports = class Jakexpress {
                 'put': app.put(pathObj.path, pathObj.action),
                 'patch': app.patch(pathObj.path, pathObj.action)
             };
-            return expressPath[pathObj.method];
+            expressPath[pathObj.method];
         });
         
         app.listen(port, () => {
@@ -26,4 +26,3 @@ module.exports = class Jakexpress {
         });
     }
 }
-
