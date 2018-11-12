@@ -11,18 +11,14 @@ let serverParams = {
         {
             method: 'post',
             path: '/test',
-            action: (req, res) => {
-                res.send('hi')
-            }
-        }, {
-            method: 'get',
-            path: '/test2',
-            action: (req, res) => {
-                res.send('yo fam')
-            }
+            action: getTest
         }
     ]
 };
+
+function getTest(req, res) {
+    res.send('hi');
+}
 
 const server = new Jakexpress();
 server.load(serverParams);
