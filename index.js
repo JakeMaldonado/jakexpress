@@ -9,6 +9,7 @@ module.exports = class Jakexpress {
 
         if(typeof serverParams.bp === 'undefined' || serverParams.bp) {
             bodyParser.json();
+            bodyParser.urlencoded({ extended: false });
         }
 
         serverParams.use.forEach(param => app.use(param));
