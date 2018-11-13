@@ -3,12 +3,10 @@ const express = require('express');
 
 module.exports = class Jakexpress {
     load(serverParams) {
-        let port = process.env.PORT || serverParams.localport;
+        const port = process.env.PORT || serverParams.localport ? serverParams.localport : 3000;
         const app = express();
 
-        serverParams.use.forEach(param => {
-            app.use(param);
-        });
+        serverParams.use.forEach(param => app.use(param));
 
         serverParams.paths.forEach(pathObj => {
             switch(pathObj.method ? pathObj.method.toLowerCase() : '') {

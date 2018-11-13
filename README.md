@@ -16,7 +16,8 @@ The server params take in three parameters: `localport`,`use`,`paths`.
 
 #### localport
 
-`localport` is the port you want to host on if the environment is not development.
+`localport` is the port you want to host on if the environment is not development.  
+If no `localport` is defined then it is automatically set to `3000`.
 
 ###### example
 
