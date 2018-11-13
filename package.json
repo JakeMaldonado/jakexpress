@@ -1,6 +1,6 @@
 {
   "name": "jakexpress",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "a quick way to make a server using an object",
   "main": "index.js",
   "scripts": {

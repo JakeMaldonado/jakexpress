@@ -68,7 +68,7 @@ paths: [
 If `true` or `undefined` the server will automatically add  
 ``` javascript
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 ###### example
