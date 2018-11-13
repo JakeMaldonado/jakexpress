@@ -45,7 +45,7 @@ use: [
 
 ##### `paths` is an array of objects - each objects should contain: 
    
-`method`: the method of the request  -- defaults to `get` if undefined
+`method`: the method of the request  -- defaults to `get` if undefined  
 `path`: the path of the url  
 `action`: a function to do when the path is requested  
 
