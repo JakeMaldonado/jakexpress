@@ -12,7 +12,7 @@ const Jakexpress = require('jakexpress');
 
 ### Create your server params
 
-The server params take in three parameters: `localport`,`use`,`paths`.
+The server params take in three parameters: `localport`,`use`,`paths`, `bp`, `listenaction`.
 
 #### localport
 
@@ -34,14 +34,16 @@ If no `localport` is defined then it is automatically set to `3000`.
 
 ``` javascript
 use: [
-    bodyParser.json(),
-    bodyParser.urlencoded({ extended: true })
+    (req, res, next) => {
+        console.log('Time: %d', Date.now());
+        next();
+    }
 ]
 ```
 
 #### paths
 
-###### `paths` is an array of objects - each objects should contain: 
+##### `paths` is an array of objects - each objects should contain: 
    
 `method`: the method of the request  -- defaults to `get` if undefined
 `path`: the path of the url  
@@ -61,6 +63,31 @@ paths: [
 ]
 ```
 
+#### bp
+
+If `true` or `undefined` the server will automatically add  
+``` javascript
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+```
+
+###### example
+
+``` javascript
+bp: true
+```
+
+#### listenaction
+
+This is a function that will be passed to `app.listen`.  
+By default it will just console log the port that the server is running on.
+
+###### example
+
+``` javascript
+listenaction: () => console.log('server is up!')
+```
+
 ### Example usage
 
 Here is an example of jakexpress being used to make a simple server where the get `/test` path responds with 'hi'.
@@ -70,10 +97,13 @@ const Jakexpress = require('jakexpress');
 const bodyParser = require('body-parser');
 
 let serverParams = {
+    bp: true;
     localport: 3000,
     use: [
-        bodyParser.json(),
-        bodyParser.urlencoded({ extended: true })
+        (req, res, next) => {
+            console.log('Time: %d', Date.now());
+            next();
+        }
     ],
     paths: [
         {
@@ -81,7 +111,8 @@ let serverParams = {
             path: '/test',
             action: getTest
         }
-    ]
+    ],
+    listenaction: () => console.log('server is up!')
 };
 
 function getTest(req, res) {

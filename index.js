@@ -1,10 +1,16 @@
 'use strict';
 const express = require('express');
+const bodyParser = require('body-parser');
 
 module.exports = class Jakexpress {
     load(serverParams) {
         const port = process.env.PORT || serverParams.localport ? serverParams.localport : 3000;
         const app = express();
+
+        if(typeof serverParams.bp === 'undefined' || serverParams.bp) {
+            bodyParser.json();
+            bodyParser.urlencoded({ extended: true });
+        }
 
         serverParams.use.forEach(param => app.use(param));
 
@@ -26,9 +32,10 @@ module.exports = class Jakexpress {
                     app.get(pathObj.path, pathObj.action);
             }
         });
-        
-        app.listen(port, () => {
-            console.log(`Server listening on port: ${port}`);
-        });
+
+        app.listen(
+            port, 
+            serverParams.listenaction ? serverParams.listenaction : () => console.log(`Server listening on port: ${port}`)
+        );
     }
 }
