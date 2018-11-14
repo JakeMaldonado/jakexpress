@@ -4,7 +4,7 @@
 
 `npm i jakexpress`
 
-#### Require Jakexios
+#### Require Jakexpress
 
 ``` javascript
 const Jakexpress = require('jakexpress');
