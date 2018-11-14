@@ -20,7 +20,7 @@ module.exports = class Jakexpress {
             });
         }
 
-        serverParams.use.forEach(param => app.use(param));
+        serverParams.use && serverParams.use.forEach(param => app.use(param));
 
         serverParams.paths.forEach(pathObj => {
             switch(pathObj.method ? pathObj.method.toLowerCase() : '') {
