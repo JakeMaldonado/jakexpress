@@ -12,7 +12,7 @@ const Jakexpress = require('jakexpress');
 
 ### Create your server params
 
-The server params take in three parameters: `localport`,`use`,`paths`, `bp`, `listenaction`.
+The server params take in three parameters: `localport`,`use`,`paths`, `bp`, `listenaction`, `cors`.
 
 #### localport
 
@@ -34,11 +34,18 @@ If no `localport` is defined then it is automatically set to `3000`.
 
 ``` javascript
 use: [
-    (req, res, next) => {
-        console.log('Time: %d', Date.now());
-        next();
-    }
+    express.static('public')
 ]
+```
+
+#### cors
+
+`cors` set cors as true if you want to allow cross-origin resource sharing
+
+###### example
+
+``` javascript
+cors: true
 ```
 
 #### paths
@@ -95,15 +102,14 @@ Here is an example of jakexpress being used to make a simple server where the ge
 ```javascript
 const Jakexpress = require('jakexpress');
 const bodyParser = require('body-parser');
+const express = require('express');
 
 let serverParams = {
-    bp: true;
+    bp: true,
+    cors: true,
     localport: 3000,
     use: [
-        (req, res, next) => {
-            console.log('Time: %d', Date.now());
-            next();
-        }
+        express.static('public')
     ],
     paths: [
         {

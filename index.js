@@ -8,8 +8,16 @@ module.exports = class Jakexpress {
         const app = express();
 
         if(typeof serverParams.bp === 'undefined' || serverParams.bp) {
-            bodyParser.json();
-            bodyParser.urlencoded({ extended: false });
+            app.use(bodyParser.json());
+            app.use(bodyParser.urlencoded({ extended: false }));
+        }
+
+        if(serverParams.cors) {
+            app.use((req, res, next) => {
+                res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                next();
+            });
         }
 
         serverParams.use.forEach(param => app.use(param));
