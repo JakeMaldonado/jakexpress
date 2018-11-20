@@ -101,15 +101,13 @@ Here is an example of jakexpress being used to make a simple server where the ge
 
 ```javascript
 const Jakexpress = require('jakexpress');
-const bodyParser = require('body-parser');
-const express = require('express');
 
 let serverParams = {
     bp: true,
     cors: true,
     localport: 3000,
     use: [
-        express.static('public')
+        middleWare
     ],
     paths: [
         {
@@ -124,6 +122,11 @@ let serverParams = {
 function getTest(req, res) {
     console.log(req);
     res.send('hi');
+}
+
+function middleWare(req, res, next) {
+    console.log('Request Type:', req.method);
+    next();
 }
 
 const server = new Jakexpress();
