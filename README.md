@@ -12,7 +12,7 @@ const Jakexpress = require('jakexpress');
 
 ### Create your server params
 
-The server params take in three parameters: `localport`,`use`,`paths`, `bp`, `listenaction`, `cors`.
+The server params can take in 6 parameters: `localport`,`use`,`paths`, `bp`, `listenaction`, `cors`.
 
 #### localport
 
