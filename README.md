@@ -111,7 +111,6 @@ let serverParams = {
     ],
     paths: [
         {
-            method: 'get',
             path: '/test',
             action: getTest
         }
@@ -119,8 +118,11 @@ let serverParams = {
     listenaction: () => console.log('server is up!')
 };
 
+const server = new Jakexpress();
+server.load(serverParams);
+
 function getTest(req, res) {
-    console.log(req);
+    console.log('hi');
     res.send('hi');
 }
 
@@ -128,9 +130,6 @@ function middleWare(req, res, next) {
     console.log('Request Type:', req.method);
     next();
 }
-
-const server = new Jakexpress();
-server.load(serverParams);
 ```
 
 
